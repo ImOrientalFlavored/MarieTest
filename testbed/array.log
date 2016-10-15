@@ -1,0 +1,5 @@
+Assembly successful. Mexfile=testbed/array.mex
+Cleaned test output: 0 64 1 32 2 16 3 8 4 4 5 2 6 1
+Expected output:     0 64 1 32 2 16 3 8 4 4 5 2 6 1
+Test output seems correct
+Test completed on file array.mex

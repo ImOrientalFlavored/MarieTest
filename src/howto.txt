@@ -1,0 +1,19 @@
+# If not inside the project directory, go to the project directory first.
+cd MarieTest
+
+# Specify the root-package-directory to the class that we want to compile.
+# All dependencies should be resolved and compiled accordingly.
+javac -cp src src/Examples/<Testname.java>
+
+# Run from command line without any .mas file as argument (using default test file)
+java -cp src Examples.<Testname>
+# Or run from command line with a filepath as argument (either a single .mas file or a directory containing *.mas files).
+java -cp src Examples.<Testname> <MarieSource.mas>
+
+
+
+# For example, the following commands compile and test for parity checking:
+javac -cp src src/Examples/TestParity.java 
+# Replace testbed/parity-brute.mas with whatever .mas file to be tested.
+java -cp src Examples.TestParity testbed/parity-brute.mas
+

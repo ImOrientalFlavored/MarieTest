@@ -1,0 +1,41 @@
+/ Author: AHui
+/
+/ This program accepts two integer inputs X and Y and compute the value of X*Y
+/ through multiplying X to itself (Y-1) times.
+/ It is assumed that Y must be positive.
+/ Where Y is not positive, the program will run into an infinite loop.
+
+
+	Input
+	Store	X	/store A in first parameter
+
+	Input
+	Store	Y	/store B in second parameter
+
+	JnS	Mul
+	Load	Sum	/result of X * Y
+	Output
+	Halt
+
+Mul,	Hex	0	/Store return address here
+	Load	Y
+	Store 	Ctr	/Initialize Ctr to Y
+	Clear
+	Store	Sum	/Initialize Sum to 0
+Loop,	Load    Sum	/Implement Sum = Sum + X
+	Add     X
+	Store   Sum
+	Load    Ctr	/ Need to iterate Y times. Use Ctr to keep track
+	Subt    One
+	Store   Ctr
+	Load	Ctr
+	Skipcond 400	/If Ctr = 0, finish subroutine
+	Jump	Loop
+	JumpI   Mul
+
+/ Local variable of the multiplication routine
+X,	Dec	0
+Y,	Dec	0
+Ctr,	Dec	0
+One,	Dec	1
+Sum,	Dec	0

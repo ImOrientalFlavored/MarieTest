@@ -1,0 +1,73 @@
+/ Author: AHui
+/
+/ This program accepts an ASCII character, count the number of 1's in its binary code
+/ and output a bit value to make the total number of bits even.
+/
+/ Approach: brute force
+/
+/ Status: INCOMPLETE
+/ This program demonstrates the implementation of parity checking 
+/ for ASCII characters 33, 34, 35. 
+
+
+
+/ Ask for X in ASCII
+start,	Input
+	Store X
+
+/ Check if X is equal to decimal 33 or ASCII code (!)
+S1,	Load X
+	Subt thirtythree
+	Skipcond 400		/ If X is 33,
+	Jump S2			/
+	Load two		/ Then we know there are two 1's in X
+	Store count		/ Save that to count
+	Load zero		/ Since number of 1's is even,
+	Store parity		/ there is no need for adding another 1 to make even parity.
+	Jump end
+
+/ Check if X is equal to decimal 34 or ASCII code (")
+S2,	Load X
+	Subt thirtyfour
+	Skipcond 400
+	Jump S3
+	Load two
+	Store count
+	Load zero
+	Store parity
+	Jump end
+
+/ Check if X is equal to decimal 35 or ASCII code (#)
+S3,	Load X
+	Subt thirtyfive
+	Skipcond 400
+	Jump S4
+	Load three
+	Store count
+	Load one
+	Store parity
+	Jump end
+
+
+S4,	Halt 	/ to be continued.
+
+/ When all codes are checked, output the results.
+end,	Load X
+	Output
+	Load count
+	Output
+	Load parity
+	Output
+	Jump start
+
+X,	hex 0
+count,	Dec 0
+parity,	Dec 0
+zero,	Dec 0
+one,	Dec 1
+two,	Dec 2
+three,	Dec 3
+
+thirtythree,	Dec 33
+thirtyfour,	Dec 34
+thirtyfive,	Dec 35

@@ -1,0 +1,37 @@
+Assembly successful. Mexfile=testbed/warmup.mex
+Start run 1
+Testing input 1
+Testing input 3
+Cleaned test output: 3
+Expected output:     3
+Test output seems correct
+Run completed.
+Start run 2
+Testing input 0
+Testing input 9
+Cleaned test output: 0
+Expected output:     0
+Test output seems correct
+Run completed.
+Start run 3
+Testing input -4
+Testing input 1
+Cleaned test output: -4
+Expected output:     -4
+Test output seems correct
+Run completed.
+Start run 4
+Testing input 6
+Testing input -1
+Cleaned test output: 
+Expected output:     
+Test output seems correct
+Run completed.
+Start run 5
+Testing input 20
+Testing input 0
+Cleaned test output: 
+Expected output:     
+Test output seems correct
+Run completed.
+Tests completed on file warmup.mex

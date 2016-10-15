@@ -1,0 +1,76 @@
+/ Author: AHui
+/ This program iterates through a loop to print all contents in an array.
+/ It reports two results:
+/   1. the array index currently accessed
+/   2. the value at array[index]
+
+/ Since array access requires us knowing the start address of the array
+/ the array variable is put at the beginning of the program so that
+/ its address will not change when we modify the program.
+/
+/ The array has 7 values, labeled bit6 down to bit0.
+
+
+/ This is the first instruction. It indicates where the main function starts.
+JUMP start
+
+/ Array start location and size
+array,	HEX 003		/ Start address of array
+size,	DEC 7		/ Size of array
+/ Array contents
+bit6,	DEC 64		/ In binary: 01000000
+bit5,	DEC 32		/ In binary: 00100000
+bit4,	DEC 16		/ In binary: 00010000
+bit3,	DEC 8		/ In binary: 00001000
+bit2,	DEC 4		/ In binary: 00000100
+bit1,	DEC 2		/ In binary: 00000010
+bit0,	DEC 1		/ In binary: 00000001
+/ Other variables
+one,	DEC 1
+
+
+/ This subroutine loads the indexed bit of the array into AC
+index,	DEC 0		/ The specific index must be set before the call
+pos,	DEC 0
+getbit,	HEX 0
+	/ Compute the exact location (array+index) to be loaded
+	CLEAR pos
+	LOAD array
+	ADD index
+	STORE pos
+	/ Load the value to AC.
+	LOADI pos
+	/ task completed.
+	JUMPI getbit
+
+
+
+/ The main function.
+start,	CLEAR
+	STORE index	/ set index to 0
+
+	/ Check if the array is still in range.
+	/ if (index-size)<0, then it is in range.
+for,	LOAD index
+	SUBT size
+	SKIPCOND 000
+	JUMP endfor
+
+	/ Display index
+	LOAD index
+	OUTPUT
+
+	/ Display the value at array[index]
+	JNS getbit
+	OUTPUT
+
+	/ Increment index
+	LOAD one
+	ADD index
+	STORE index
+	JUMP for
+endfor,	halt
+
+
+	
+
